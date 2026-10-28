@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.streamlit/secrets.toml
+data/raw/
+data/processed/
+artifacts/checkpoints/
+artifacts/generated/
+artifacts/metrics/
+*.pt
+*.pth
+*.zip
+.ipynb_checkpoints/
+
