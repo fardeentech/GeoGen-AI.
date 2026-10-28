@@ -10,6 +10,14 @@ from models import CLASS_NAMES, Generator
 
 ROOT = Path(__file__).resolve().parent
 CHECKPOINT = ROOT / "artifacts" / "checkpoints" / "conditional_dcgan_latest.pt"
+import gdown
+
+CHECKPOINT_URL = "https://drive.google.com/uc?id=124G_Jw4dcYsEJwF_ZvsQlqLp5GhG8hSQ"
+
+def ensure_checkpoint():
+    if not CHECKPOINT.exists():
+        CHECKPOINT.parent.mkdir(parents=True, exist_ok=True)
+        gdown.download(CHECKPOINT_URL, str(CHECKPOINT), quiet=False)
 
 
 def image_to_png(image: torch.Tensor) -> bytes:
@@ -34,7 +42,8 @@ def main() -> None:
     st.title("🛰️ GeoGen AI")
     st.subheader("Satellite image generation and data augmentation using GANs")
     st.write("Choose a EuroSAT land-use class and generate new 64 × 64 RGB tiles using the trained conditional GAN.")
-
+    
+    ensure_checkpoint()
     if not CHECKPOINT.exists():
         st.warning("No trained generator checkpoint found. Train the model in Google Colab, then copy `conditional_dcgan_latest.pt` into `artifacts/checkpoints/`.")
         st.code("python train_gan.py --epochs 50", language="bash")
