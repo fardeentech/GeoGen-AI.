@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 CHECKPOINT = ROOT / "artifacts" / "checkpoints" / "conditional_dcgan_latest.pt"
 import gdown
 
-CHECKPOINT_URL = "https://drive.google.com/uc?id=124G_Jw4dcYsEJwF_ZvsQlqLp5GhG8hSQ"
+CHECKPOINT_URL = "https://drive.google.com/uc?id=16o6uGMDqx3891dEZl4qe1u6Dc6JfSFmO"
 
 def ensure_checkpoint():
     if not CHECKPOINT.exists():
